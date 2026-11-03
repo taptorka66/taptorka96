@@ -365,8 +365,8 @@
       'krasnoturinsk_01': {
         name: "Спасибо,<br>что вы с нами",
         subtitle: "Выберите, где<br>оставить отзыв",
-        yandex: 'https://yandex.ru/maps/11165/krasnoturinsk/?ll=60.176344%2C59.764157&mode=poi&poi%5Bpoint%5D=60.176064%2C59.764385&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D66935755217&tab=reviews&z=20',
-        gis: '' // Убрали ссылку, кнопка скроется
+        yandex: 'https://yandex.ru/maps/11165/krasnoturinsk/?ll=60.176854%2C59.763853&mode=poi&poi%5Bpoint%5D=60.176064%2C59.764385&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D66935755217&tab=reviews&z=18.6',
+        gis: ''
       }
     };
 
@@ -382,7 +382,6 @@
       const yandexBtn = document.getElementById('yandex-btn');
       const gisBtn = document.getElementById('2gis-btn');
 
-      // Логика скрытия кнопок, если ссылки нет
       if (client.yandex && client.yandex.trim() !== '') {
         yandexBtn.href = client.yandex;
       } else {
@@ -410,4 +409,3 @@
   </script>
 </body>
 </html>
-
