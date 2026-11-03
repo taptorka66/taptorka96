@@ -58,7 +58,7 @@
                   inset 0 1px 0 rgba(255, 255, 255, 0.1);
     }
 
-    /* ВЕКТОРНЫЙ ЛОГОТИП TAPTORKA (1 в 1) */
+    /* АНИМИРОВАННЫЙ ВЕКТОРНЫЙ ЛОГОТИП TAPTORKA */
     .logo-box {
       width: 110px;
       height: 110px;
@@ -67,11 +67,23 @@
       justify-content: center;
       margin-bottom: 24px;
       filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.6));
+      animation: logoAppear 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .logo-box svg {
       width: 100%;
       height: 100%;
+    }
+
+    @keyframes logoAppear {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-10px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
 
     .title {
@@ -213,7 +225,7 @@
       transform: translateX(2px) translateY(-2px);
     }
 
-    /* АККУРАТНЫЙ ФУТЕР В ОДНУ СТРОКУ */
+    /* АККУРАТНЫЙ ФУТЕР В ОДНУ СТРОКУ СО ССЫЛКОЙ НА TG */
     .footer {
       font-size: 13px;
       color: #7a7f8a;
@@ -222,7 +234,7 @@
     }
 
     .footer a {
-      color: inherit;
+      color: var(--text-muted);
       text-decoration: none;
       transition: color 0.2s ease;
     }
@@ -235,7 +247,7 @@
 <body>
 
   <div class="container">
-    <!-- ТОЧНЫЙ ВЕКТОРНЫЙ ЛОГОТИП TAPTORKA -->
+    <!-- АНИМИРОВАННЫЙ ВЕКТОРНЫЙ ЛОГОТИП TAPTORKA -->
     <div class="logo-box">
       <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -341,27 +353,27 @@
       </a>
     </div>
 
+    <!-- КЛИКАБЕЛЬНЫЙ ФУТЕР -->
     <div class="footer">
       by TapTorka &bull; Tg: <a href="https://t.me/torka001" target="_blank" rel="noopener">@torka001</a>
     </div>
   </div>
 
   <script>
-    // БАЗА ДАННЫХ КЛИЕНТОВ (сюда добавляешь новые бизнесы)
+    // БАЗА ДАННЫХ КЛИЕНТОВ
     const CLIENTS = {
       'rest_01': {
         name: "Спасибо,<br>что вы с нами",
         subtitle: "Выберите, где<br>оставить отзыв",
         yandex: 'https://yandex.ru/maps/org/sample',
         gis: 'https://2gis.ru/firm/sample'
+      },
+      'barber': {
+        name: "Барбершоп TOP",
+        subtitle: "Спасибо за визит!<br>Оцените нашу стрижку",
+        yandex: 'https://yandex.ru/maps/',
+        gis: 'https://2gis.ru/'
       }
-      // Новый клиент добавляется сюда через запятую:
-      // 'barber': {
-      //   name: "Барбершоп TOP",
-      //   subtitle: "Спасибо за визит!",
-      //   yandex: 'ССЫЛКА_ЯНДЕКС',
-      //   gis: 'ССЫЛКА_2ГИС'
-      // }
     };
 
     // Читаем параметр ?id= или ?client= из ссылки
@@ -390,3 +402,4 @@
   </script>
 </body>
 </html>
+
