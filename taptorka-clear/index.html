@@ -362,17 +362,11 @@
   <script>
     // БАЗА ДАННЫХ КЛИЕНТОВ
     const CLIENTS = {
-      'rest_01': {
+      'krasnoturinsk_01': {
         name: "Спасибо,<br>что вы с нами",
         subtitle: "Выберите, где<br>оставить отзыв",
-        yandex: 'https://yandex.ru/maps/org/sample',
-        gis: 'https://2gis.ru/firm/sample'
-      },
-      'barber': {
-        name: "Барбершоп TOP",
-        subtitle: "Спасибо за визит!<br>Оцените нашу стрижку",
-        yandex: 'https://yandex.ru/maps/',
-        gis: 'https://2gis.ru/'
+        yandex: 'https://yandex.ru/maps/11165/krasnoturinsk/?ll=60.176344%2C59.764157&mode=poi&poi%5Bpoint%5D=60.176064%2C59.764385&poi%5Buri%5D=ymapsbm1%3A%2F%2Forg%3Foid%3D66935755217&tab=reviews&z=20',
+        gis: '' // Убрали ссылку, кнопка скроется
       }
     };
 
@@ -384,8 +378,22 @@
       const client = CLIENTS[clientId];
       document.getElementById('biz-title').innerHTML = client.name;
       document.getElementById('biz-subtitle').innerHTML = client.subtitle;
-      document.getElementById('yandex-btn').href = client.yandex;
-      document.getElementById('2gis-btn').href = client.gis;
+      
+      const yandexBtn = document.getElementById('yandex-btn');
+      const gisBtn = document.getElementById('2gis-btn');
+
+      // Логика скрытия кнопок, если ссылки нет
+      if (client.yandex && client.yandex.trim() !== '') {
+        yandexBtn.href = client.yandex;
+      } else {
+        yandexBtn.style.display = 'none';
+      }
+
+      if (client.gis && client.gis.trim() !== '') {
+        gisBtn.href = client.gis;
+      } else {
+        gisBtn.style.display = 'none';
+      }
     }
 
     // Перезапуск анимации звёзд при клике/тапе
